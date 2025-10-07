@@ -1,31 +1,74 @@
-<nav class="navbar">
+<nav class="navbar" [class.scrolled]="isScrolled()">
   <div class="nav-container">
-    <a href="#home" class="nav-logo">
-      Ronald Leal
+    <a href="#home" class="nav-logo" (click)="scrollToSection('home', $event)">
+      <span class="logo-text">Ronald Leal</span>
+      <span class="logo-subtitle">Full Stack Dev</span>
     </a>
     
-    <ul class="nav-menu">
+    <ul class="nav-menu" [class.active]="isMobileMenuOpen()">
       <li class="nav-item">
-        <a href="#about" class="nav-link">Sobre mí</a>
+        <a href="#home" 
+           class="nav-link" 
+           [class.active]="activeSection() === 'home'"
+           (click)="scrollToSection('home', $event)">
+           Inicio
+        </a>
       </li>
       <li class="nav-item">
-        <a href="#projects" class="nav-link">Proyectos</a>
+        <a href="#about" 
+           class="nav-link" 
+           [class.active]="activeSection() === 'about'"
+           (click)="scrollToSection('about', $event)">
+           Sobre mí
+        </a>
       </li>
       <li class="nav-item">
-        <a href="#skills" class="nav-link">Habilidades</a>
+        <a href="#projects" 
+           class="nav-link" 
+           [class.active]="activeSection() === 'projects'"
+           (click)="scrollToSection('projects', $event)">
+           Proyectos
+        </a>
       </li>
       <li class="nav-item">
-        <a href="#experience" class="nav-link">Experiencia</a>
+        <a href="#skills" 
+           class="nav-link" 
+           [class.active]="activeSection() === 'skills'"
+           (click)="scrollToSection('skills', $event)">
+           Habilidades
+        </a>
       </li>
       <li class="nav-item">
-        <a href="#contact" class="nav-link">Contacto</a>
+        <a href="#experience" 
+           class="nav-link" 
+           [class.active]="activeSection() === 'experience'"
+           (click)="scrollToSection('experience', $event)">
+           Experiencia
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#contact" 
+           class="nav-link" 
+           [class.active]="activeSection() === 'contact'"
+           (click)="scrollToSection('contact', $event)">
+           Contacto
+        </a>
       </li>
     </ul>
     
-    <div class="hamburger">
+    <!-- Botón de tema -->
+    <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDarkMode() ? 'Activar tema claro' : 'Activar tema oscuro'">
+      <i class="theme-icon">{{ isDarkMode() ? '◐' : '○' }}</i>
+    </button>
+    
+    <!-- Hamburguesa mejorada -->
+    <button class="hamburger" 
+            [class.active]="isMobileMenuOpen()" 
+            (click)="toggleMobileMenu()"
+            aria-label="Toggle navigation">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
-    </div>
+    </button>
   </div>
 </nav>

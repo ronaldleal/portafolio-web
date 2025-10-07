@@ -13,17 +13,15 @@ export class Hero implements OnInit, OnDestroy {
   // Texto animado
   subtitleText = 'Desarrollador Full Stack especializado en Backend';
   displayedText = signal('');
-  
+
   private typewriterInterval?: number;
   private currentIndex = 0;
   private isDeleting = false;
-  
+
   // Textos rotativos
   private readonly rotatingTexts = [
     'Desarrollador Full Stack especializado en Backend',
-    'Experto en Java & Spring Boot',
-    'Arquitecto de Software',
-    'Desarrollador en Sofka Technologies'
+    'Experto en Java & Spring Boot'
   ];
   private currentTextIndex = 0;
 
@@ -36,15 +34,19 @@ export class Hero implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.typewriterInterval) {
+    // Solo limpiar en el browser
+    if (typeof window !== 'undefined' && this.typewriterInterval) {
       clearInterval(this.typewriterInterval);
     }
   }
 
   private startTypewriter() {
+    // Solo ejecutar en el browser
+    if (typeof window === 'undefined') return;
+    
     this.typewriterInterval = window.setInterval(() => {
       const currentText = this.rotatingTexts[this.currentTextIndex];
-      
+
       if (!this.isDeleting) {
         // Escribiendo
         if (this.currentIndex < currentText.length) {
@@ -69,6 +71,9 @@ export class Hero implements OnInit, OnDestroy {
   }
 
   private animateCounters() {
+    // Solo ejecutar en el browser
+    if (typeof document === 'undefined') return;
+    
     setTimeout(() => {
       const counters = document.querySelectorAll('.stat-number');
       counters.forEach((counter) => {
@@ -79,12 +84,15 @@ export class Hero implements OnInit, OnDestroy {
   }
 
   private initFloatingElements() {
+    // Solo ejecutar en el browser
+    if (typeof document === 'undefined') return;
+    
     // Agregar movimiento aleatorio a elementos flotantes
     const floatingElements = document.querySelectorAll('.floating-element');
     floatingElements.forEach((element, index) => {
       const randomDelay = Math.random() * 2;
       const randomDuration = 3 + Math.random() * 2;
-      
+
       (element as HTMLElement).style.animationDelay = `${randomDelay}s`;
       (element as HTMLElement).style.animationDuration = `${randomDuration}s`;
     });
@@ -92,25 +100,28 @@ export class Hero implements OnInit, OnDestroy {
 
   downloadCV(event: Event) {
     event.preventDefault();
-    
+
+    // Solo ejecutar en el browser
+    if (typeof window === 'undefined' || typeof document === 'undefined') return;
+
     // Simular descarga (aquí pondrías la lógica real)
     const link = document.createElement('a');
     link.href = '#'; // Aquí iría la URL de tu CV
     link.download = 'Ronald_Leal_CV.pdf';
-    
+
     // Animación de feedback
     const button = event.target as HTMLElement;
     const originalText = button.textContent;
     button.textContent = '✓ Descargando...';
     button.style.background = 'var(--success-gradient)';
-    
+
     setTimeout(() => {
       button.textContent = originalText;
       button.style.background = '';
     }, 2000);
-    
+
     // link.click(); // Descomenta cuando tengas el CV real
-    
+
     // Por ahora, mostrar mensaje
     alert('CV no disponible aún. Próximamente estará disponible para descarga.');
   }
