@@ -1,28 +1,87 @@
 <section id="home" class="hero">
+  <!-- Partículas de fondo animadas -->
+  <div class="hero-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
   <div class="hero-container">
-    <div class="hero-content">
-      <h1 class="hero-title">
-        Hola, soy <span class="highlight">Ronald Leal</span>
+    <div class="hero-content animate-slide-left">
+      <div class="hero-greeting animate-fade-in animate-delay-1">
+        👋 ¡Hola! Soy
+      </div>
+      <h1 class="hero-title animate-fade-in animate-delay-2">
+        <span class="name-text">Ronald Leal</span>
+        <span class="title-cursor">|</span>
       </h1>
-      <p class="hero-subtitle">Desarrollador Full Stack, con enfoque en backend</p>
-      <p class="hero-description">
-        Ingeniero de software especializado en Java, Spring Boot y arquitecturas robustas. 
+      <div class="hero-subtitle-container animate-fade-in animate-delay-3">
+        <span class="typing-text">{{ displayedText() }}</span>
+      </div>
+      <p class="hero-description animate-fade-in animate-delay-4">
+        Ingeniero de software especializado en <strong>Java</strong>, <strong>Spring Boot</strong> y arquitecturas robustas. 
         Apasionado por crear soluciones eficientes e innovadoras con las últimas tecnologías.
       </p>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">Contáctame</a>
-        <a href="#projects" class="btn btn-secondary">Ver Proyectos</a>
+      
+      <!-- Stats animados -->
+      <div class="hero-stats animate-bounce-in animate-delay-5">
+        <div class="stat-item">
+          <span class="stat-number" [attr.data-target]="3">0</span>
+          <span class="stat-label">Años experiencia</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" [attr.data-target]="15">0</span>
+          <span class="stat-label">Proyectos</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" [attr.data-target]="8">0</span>
+          <span class="stat-label">Tecnologías</span>
+        </div>
+      </div>
+
+      <div class="hero-buttons animate-bounce-in animate-delay-6">
+        <a href="#contact" class="btn-modern hover-glow">
+          <span>📧</span>
+          Contáctame
+        </a>
+        <a href="#projects" class="btn btn-secondary hover-lift">
+          <span>🚀</span>
+          Ver Proyectos
+        </a>
+        <a href="#" class="btn-download" (click)="downloadCV($event)">
+          <span>📄</span>
+          Descargar CV
+        </a>
       </div>
     </div>
-    <div class="hero-image">
-      <div class="avatar">
-        <img src="assets/profile.jpg" alt="Ronald Leal" class="profile-img">
-        <div class="image-placeholder">RL</div>
+    
+    <div class="hero-image animate-slide-right animate-delay-2">
+      <div class="avatar-container">
+        <div class="avatar hover-lift">
+          <img src="assets/profile.jpg" alt="Ronald Leal" class="profile-img">
+          <div class="image-placeholder">RL</div>
+          <!-- Efectos visuales -->
+          <div class="avatar-ring"></div>
+          <div class="avatar-glow"></div>
+        </div>
+        
+        <!-- Elementos flotantes -->
+        <div class="floating-element java">☕</div>
+        <div class="floating-element spring">🍃</div>
+        <div class="floating-element code">💻</div>
+        <div class="floating-element rocket">🚀</div>
       </div>
     </div>
   </div>
   
-  <div class="scroll-indicator">
-    <div class="scroll-arrow"></div>
+  <!-- Indicador de scroll mejorado -->
+  <div class="scroll-indicator animate-bounce-in animate-delay-6">
+    <div class="scroll-text">Scroll</div>
+    <div class="scroll-arrow animate-float"></div>
   </div>
+
+  <!-- Gradient overlay -->
+  <div class="hero-gradient-overlay"></div>
 </section>
