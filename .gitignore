@@ -28,6 +28,16 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
+# Archivos temporales
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración local
+.env
+.env.local
+
 # Miscellaneous
 /.angular/cache
 .sass-cache/

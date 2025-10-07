@@ -1,0 +1,13 @@
+/* Estilos específicos del componente App */
+.portfolio-main {
+  margin-top: 0;
+}
+
+/* Espaciado entre secciones */
+section {
+  padding: 5rem 0;
+}
+
+section:nth-child(even) {
+  background-color: #f8f9fa;
+}
