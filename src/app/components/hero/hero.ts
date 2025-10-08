@@ -15,8 +15,6 @@ export class Hero implements OnInit, OnDestroy {
   displayedText = signal('');
 
   private typewriterInterval?: number;
-  private currentIndex = 0;
-  private isDeleting = false;
 
   // Textos rotativos
   private readonly rotatingTexts = [
@@ -29,8 +27,7 @@ export class Hero implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.startTypewriter();
-    this.animateCounters();
-    this.initFloatingElements();
+    this.initTechStackAnimation();
   }
 
   ngOnDestroy() {
@@ -43,59 +40,74 @@ export class Hero implements OnInit, OnDestroy {
   private startTypewriter() {
     // Solo ejecutar en el browser
     if (typeof window === 'undefined') return;
-    
-    this.typewriterInterval = window.setInterval(() => {
-      const currentText = this.rotatingTexts[this.currentTextIndex];
 
-      if (!this.isDeleting) {
-        // Escribiendo
-        if (this.currentIndex < currentText.length) {
-          this.displayedText.set(currentText.substring(0, this.currentIndex + 1));
-          this.currentIndex++;
-        } else {
-          // Pausa antes de empezar a borrar
-          setTimeout(() => {
-            this.isDeleting = true;
-          }, 2000);
-        }
-      } else if (this.currentIndex > 0) {
-        // Borrando
-        this.displayedText.set(currentText.substring(0, this.currentIndex - 1));
-        this.currentIndex--;
-      } else {
-        // Cambiar al siguiente texto
-        this.isDeleting = false;
-        this.currentTextIndex = (this.currentTextIndex + 1) % this.rotatingTexts.length;
-      }
-    }, this.isDeleting ? 50 : 100);
+    // Efecto Slide & Reveal moderno
+    this.slideRevealEffect();
   }
 
-  private animateCounters() {
-    // Solo ejecutar en el browser
-    if (typeof document === 'undefined') return;
+  private slideRevealEffect() {
+    const showDuration = 4000; // Tiempo que se muestra cada texto  
+    const animationDuration = 1200; // Duración de la animación de transición
+
+    // Mostrar el primer texto con efecto
+    this.revealText(this.rotatingTexts[this.currentTextIndex]);
+
+    this.typewriterInterval = window.setInterval(() => {
+      // Ocultar texto actual
+      this.hideCurrentText();
+
+      setTimeout(() => {
+        // Cambiar al siguiente texto
+        this.currentTextIndex = (this.currentTextIndex + 1) % this.rotatingTexts.length;
+        this.revealText(this.rotatingTexts[this.currentTextIndex]);
+      }, animationDuration / 2);
+    }, showDuration);
+  }
+
+  private revealText(text: string) {
+    // Crear HTML con palabras envueltas en spans
+    const words = text.split(' ');
+    const wrappedText = words.map((word, index) => 
+      `<span class="word-reveal" style="animation-delay: ${index * 0.1}s">${word}</span>`
+    ).join(' ');
+    
+    this.displayedText.set(text); // Fallback para SEO
     
     setTimeout(() => {
-      const counters = document.querySelectorAll('.stat-number');
-      counters.forEach((counter) => {
-        const target = parseInt(counter.getAttribute('data-target') || '0');
-        this.animationService.animateCounter(counter as HTMLElement, 0, target, 2000);
-      });
-    }, 1500);
+      const container = document.querySelector('.reveal-text');
+      if (container) {
+        container.innerHTML = wrappedText;
+        container.classList.add('revealing');
+      }
+    }, 50);
   }
 
-  private initFloatingElements() {
+  private hideCurrentText() {
+    const container = document.querySelector('.reveal-text');
+    if (container) {
+      container.classList.remove('revealing');
+      container.classList.add('hiding');
+      
+      setTimeout(() => {
+        container.classList.remove('hiding');
+        container.innerHTML = '';
+      }, 600);
+    }
+  }
+
+  private initTechStackAnimation() {
     // Solo ejecutar en el browser
     if (typeof document === 'undefined') return;
-    
-    // Agregar movimiento aleatorio a elementos flotantes
-    const floatingElements = document.querySelectorAll('.floating-element');
-    floatingElements.forEach((element, index) => {
-      const randomDelay = Math.random() * 2;
-      const randomDuration = 3 + Math.random() * 2;
 
-      (element as HTMLElement).style.animationDelay = `${randomDelay}s`;
-      (element as HTMLElement).style.animationDuration = `${randomDuration}s`;
-    });
+    setTimeout(() => {
+      const techItems = document.querySelectorAll('.tech-item');
+      techItems.forEach((item, index) => {
+        // Aplicar animación escalonada
+        (item as HTMLElement).style.animationDelay = `${index * 0.15}s`;
+        (item as HTMLElement).style.opacity = '1';
+        (item as HTMLElement).style.transform = 'translateY(0)';
+      });
+    }, 500);
   }
 
   downloadCV(event: Event) {
@@ -124,5 +136,22 @@ export class Hero implements OnInit, OnDestroy {
 
     // Por ahora, mostrar mensaje
     alert('CV no disponible aún. Próximamente estará disponible para descarga.');
+  }
+
+  scrollToNextSection() {
+    // Buscar la siguiente sección (normalmente es 'about')
+    const aboutSection = document.querySelector('#about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      // Si no existe 'about', scroll hacia abajo una pantalla completa
+      window.scrollBy({
+        top: window.innerHeight,
+        behavior: 'smooth'
+      });
+    }
   }
 }

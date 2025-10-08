@@ -1,13 +1,197 @@
-/* Estilos específicos del componente App */
-.portfolio-main {
-  margin-top: 0;
+/* Carrusel Horizontal Portfolio */
+.portfolio-carousel {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-/* Espaciado entre secciones */
-section {
-  padding: 5rem 0;
+/* Wrapper del carrusel */
+.carousel-wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
-section:nth-child(even) {
-  background-color: #f8f9fa;
+/* Container de todos los slides */
+.carousel-slides {
+  display: flex;
+  width: calc(100vw * 6); /* 6 slides de 100vw cada uno */
+  height: 100vh;
+  transition: transform 0.8s ease-in-out;
+  will-change: transform;
+}
+
+/* Cada slide individual */
+.slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  position: relative;
+  
+  /* Debug temporal - bordes coloridos para cada slide */
+  &#slide-0 { border-left: 5px solid red; }
+  &#slide-1 { border-left: 5px solid green; }
+  &#slide-2 { border-left: 5px solid blue; }
+  &#slide-3 { border-left: 5px solid yellow; }
+  &#slide-4 { border-left: 5px solid purple; }
+  &#slide-5 { border-left: 5px solid orange; }
+  
+  /* Forzar que cada componente ocupe todo el slide */
+  app-hero,
+  app-about, 
+  app-projects,
+  app-skills,
+  app-experience,
+  app-contact {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+/* Indicadores tipo Banner Moderno */
+.carousel-indicators {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 1000;
+  padding: 0.5rem;
+}
+
+/* Puntos indicadores minimalistas */
+.dot-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  
+  /* Efecto de hover */
+  &:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.2);
+  }
+  
+  /* Estado activo */
+  &.active {
+    background: #ffffff;
+    transform: scale(1.3);
+    box-shadow: 
+      0 0 0 2px rgba(255, 255, 255, 0.3),
+      0 4px 12px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Animación de pulso para el activo */
+  &.active::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    animation: pulse-dot 2s infinite;
+  }
+}
+
+/* Animación de pulso */
+@keyframes pulse-dot {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+/* Mejorar experiencia táctil */
+.carousel-container {
+  cursor: grab;
+  
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+/* Indicador de swipe para móviles */
+.swipe-hint {
+  position: fixed;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  z-index: 999;
+  pointer-events: none;
+  
+  @media (max-width: 768px) {
+    display: block;
+  }
+  
+  @media (min-width: 769px) {
+    display: none;
+  }
+}
+
+/* Responsive Design para indicadores */
+@media (max-width: 768px) {
+  .carousel-indicators {
+    bottom: 1.5rem;
+    gap: 0.6rem;
+  }
+  
+  .dot-indicator {
+    width: 10px;
+    height: 10px;
+    
+    &.active {
+      transform: scale(1.4);
+    }
+    
+    &:hover:not(.active) {
+      transform: scale(1.3);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-indicators {
+    bottom: 1rem;
+    gap: 0.5rem;
+  }
+  
+  .dot-indicator {
+    width: 8px;
+    height: 8px;
+    
+    &.active {
+      transform: scale(1.5);
+    }
+    
+    &.active::before {
+      width: 16px;
+      height: 16px;
+    }
+  }
 }

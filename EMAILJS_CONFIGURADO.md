@@ -7,7 +7,7 @@ Tu portafolio ahora tiene **EmailJS completamente configurado y funcionando** co
 ### 📧 Credenciales Activas
 
 - **Service ID:** `service_r8n4cpg`
-- **Template ID:** `template_nhl40i2`  
+- **Template ID:** `template_nhl40i2`
 - **Public Key:** `Qee0KWUKFqw-TXCjmNtHp`
 
 ### 🚀 Cómo Funciona Ahora
@@ -24,7 +24,7 @@ Tu portafolio ahora tiene **EmailJS completamente configurado y funcionando** co
 // Configuración con tus credenciales reales
 private defaultConfig: EmailConfig = {
   serviceId: 'service_r8n4cpg',
-  templateId: 'template_nhl40i2', 
+  templateId: 'template_nhl40i2',
   publicKey: 'Qee0KWUKFqw-TXCjmNtHp'
 };
 
@@ -46,7 +46,7 @@ isEmailJSConfigured(): boolean {
 El template en EmailJS debe tener estas variables:
 ```
 {{from_name}} - Nombre del remitente
-{{from_email}} - Email del remitente  
+{{from_email}} - Email del remitente
 {{message}} - Mensaje del formulario
 ```
 

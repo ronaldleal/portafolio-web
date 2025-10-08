@@ -1,6 +1,33 @@
 .about {
-  padding: 5rem 0;
-  background: #fff;
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+  margin: 0;
+  background: linear-gradient(
+    180deg,
+    #0f172a 0%,           /* Navy oscuro del hero */
+    #1e293b 25%,          /* Navy medio */
+    #334155 50%,          /* Slate medio */
+    #64748b 75%,          /* Slate claro */
+    #f8fafc 100%          /* Casi blanco */
+  );
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  // Efecto de glassmorphism sutil
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(1px);
+    pointer-events: none;
+  }
 }
 
 .container {
@@ -13,20 +40,23 @@
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 3rem;
-  color: #333;
+  color: #f1f5f9; /* Texto claro para contrastar con el fondo oscuro superior */
   font-weight: 700;
   position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .section-title::after {
   content: '';
   width: 60px;
   height: 4px;
-  background: linear-gradient(135deg, #007acc, #0099ff);
+  background: linear-gradient(135deg, #d4af37, #f4d03f); /* Dorado ejecutivo */
   position: absolute;
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
 }
 
 .about-content {
@@ -38,13 +68,45 @@
 
 .about-text {
   animation: fadeInLeft 1s ease-out;
+  position: relative;
+  z-index: 1;
+  
+  // Sutil contenedor glassmorphism para mejor legibilidad
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .about-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #666;
+  color: #cbd5e1;
   margin-bottom: 2rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  position: relative;
+  text-align: justify; /* Texto justificado */
+  text-justify: inter-word; /* Espaciado suave entre palabras */
+  hyphens: auto; /* Separación silábica automática */
+  font-weight: 400;
+  letter-spacing: 0.3px; /* Espaciado sutil entre letras */
+  
+  /* Primera línea con sangría francesa elegante */
+  &:first-of-type::first-line {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Efecto de fade-in por párrafo */
+  &:nth-child(1) {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+  }
+  
+  &:nth-child(2) {
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+  }
 }
 
 .about-stats {
@@ -57,41 +119,71 @@
 .stat {
   text-align: center;
   padding: 1.5rem;
-  border-radius: 10px;
-  background: #f8f9fa;
-  transition: transform 0.3s ease;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .stat:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.05);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .stat h3 {
   font-size: 2rem;
-  color: #007acc;
+  color: #d4af37; /* Dorado ejecutivo */
   margin-bottom: 0.5rem;
   font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .stat p {
-  color: #666;
+  color: #e2e8f0; /* Gris muy claro */
   font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .about-image {
   animation: fadeInRight 1s ease-out;
 }
 
+// Animaciones para el texto
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .image-container {
   position: relative;
-  border-radius: 15px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  background: #f0f0f0;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    border-color: rgba(212, 175, 55, 0.3);
+  }
 }
 
 .about-img {
@@ -101,11 +193,68 @@
   display: none; /* Se mostrará cuando se añada la imagen */
 }
 
-/* Placeholder para imagen */
-.image-container::before {
-  content: '💻';
-  font-size: 4rem;
-  color: #ccc;
+// Imagen impactante de workspace profesional
+.image-container {
+  background-image: 
+    linear-gradient(
+      135deg, 
+      rgba(15, 23, 42, 0.8), 
+      rgba(30, 41, 59, 0.6)
+    ),
+    url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  // Overlay con brillo dorado sutil
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(212, 175, 55, 0.1) 0%,
+      rgba(244, 208, 63, 0.05) 100%
+    );
+    z-index: 1;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+  }
+  
+  // Overlay con texto de código al hover
+  &::after {
+    content: '{ "role": "Full Stack Developer", "passion": "Backend Architecture", "focus": "Innovation" }';
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    padding: 1rem;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: #d4af37;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+  
+  &:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInLeft {
@@ -130,14 +279,216 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+// Responsive Design
+@media (max-width: 768px) {
   .about-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
   }
-
+  
   .about-stats {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
   }
+  
+  .about-text {
+    padding: 1.5rem;
+  }
+  
+  .image-container {
+    height: 300px;
+    
+    &::after {
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .about-description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .stat {
+    padding: 1rem;
+  }
+  
+  .stat h3 {
+    font-size: 1.5rem;
+  }
+  
+  .scroll-indicator {
+    bottom: 1rem;
+    padding: 0.8rem;
+    
+    .scroll-text {
+      font-size: 0.8rem;
+    }
+    
+    .scroll-arrow {
+      width: 25px;
+      height: 40px;
+    }
+  }
+}
+
+// Indicador de scroll ejecutivo (fuera del padding)
+.scroll-indicator {
+  position: absolute;
+  bottom: -3rem; /* Fuera del contenido, en el margin-bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1rem;
+  border-radius: 20px;
+  
+  // Efecto de brillo sutil para indicar que es clickeable
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateX(-50%) translateY(-8px) scale(1.1);
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    .scroll-text {
+      color: #d4af37;
+      font-weight: 700;
+    }
+    
+    .scroll-arrow {
+      background: linear-gradient(180deg, #d4af37, #f4d03f);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+      transform: translateY(3px);
+    }
+  }
+  
+  // Efecto de click
+  &:active {
+    transform: translateX(-50%) translateY(-2px) scale(1.05);
+  }
+
+  .scroll-text {
+    font-size: 0.85rem;
+    color: #cbd5e1; // Color adaptado al About
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    user-select: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    
+    // Indicador visual de que es clickeable
+    &::after {
+      content: ' ↓';
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+  }
+
+  .scroll-arrow {
+    width: 30px;
+    height: 50px;
+    border: 2px solid #d4af37;
+    border-radius: 20px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      background: #d4af37;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      animation: scrollDot 2s infinite;
+    }
+  }
+}
+
+// Animación del punto en la flecha
+@keyframes scrollDot {
+  0%, 20% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+}
+
+// Animación flotante
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+// Animaciones de entrada
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(50px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.animate-delay-6 {
+  animation-delay: 1.2s;
 }

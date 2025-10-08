@@ -1,8 +1,15 @@
 .contact {
-  padding: 5rem 0;
-  background: var(--bg-primary);
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+  margin: 0;
+  background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
   position: relative;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+
   &::before {
     content: '';
     position: absolute;
@@ -93,7 +100,7 @@
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
-    
+
     &::before {
       left: 100%;
     }
@@ -125,12 +132,12 @@
   color: var(--text-secondary);
   font-weight: 500;
   margin: 0;
-  
+
   a {
     color: inherit;
     text-decoration: none;
     transition: color var(--transition-fast);
-    
+
     &:hover {
       color: var(--primary-color);
     }
@@ -163,19 +170,19 @@
   font-family: inherit;
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
-  
+
   &::placeholder {
     color: var(--text-secondary);
     opacity: 0.7;
   }
-  
+
   &:focus {
     outline: none;
     border-color: var(--primary-color);
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   }
-  
+
   &.error {
     border-color: #ef4444;
     background: rgba(239, 68, 68, 0.1);
@@ -207,7 +214,7 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  
+
   span {
     display: flex;
     align-items: center;
@@ -225,21 +232,21 @@
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
-  
+
   &.btn-primary {
     background: var(--primary-gradient);
     color: white;
-    
+
     &:hover:not(:disabled) {
       transform: translateY(-2px);
       box-shadow: var(--shadow-lg);
     }
-    
+
     &:disabled {
       opacity: 0.7;
       cursor: not-allowed;
     }
-    
+
     &.loading {
       animation: pulse 1.5s infinite;
     }
@@ -256,13 +263,13 @@
   border-radius: var(--border-radius);
   font-weight: 500;
   text-align: center;
-  
+
   &.success {
     background: rgba(34, 197, 94, 0.1);
     color: #22c55e;
     border: 1px solid rgba(34, 197, 94, 0.3);
   }
-  
+
   &.error {
     background: rgba(239, 68, 68, 0.1);
     color: #ef4444;
@@ -280,20 +287,20 @@
   .contact {
     padding: 3rem 0;
   }
-  
+
   .contact-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .contact-item {
     padding: 1rem;
   }
-  
+
   .contact-form {
     padding: 1.5rem;
   }

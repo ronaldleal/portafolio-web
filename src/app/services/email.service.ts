@@ -27,7 +27,7 @@ export class EmailService {
     // Inicializar EmailJS (solo en browser)
     if (typeof window !== 'undefined') {
       console.log('🔧 Inicializando EmailJS con public key:', this.defaultConfig.publicKey?.substring(0, 10) + '...');
-      
+
       try {
         emailjs.init(this.defaultConfig.publicKey);
         console.log('✅ EmailJS inicializado correctamente');
@@ -86,7 +86,7 @@ export class EmailService {
       console.log('📤 Enviando email con EmailJS...');
       console.log('🔑 Service ID:', emailConfig.serviceId);
       console.log('📝 Template ID:', emailConfig.templateId);
-      
+
       const response = await emailjs.send(
         emailConfig.serviceId,
         emailConfig.templateId,

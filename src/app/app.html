@@ -1,13 +1,43 @@
-<!-- Portafolio Web Angular -->
+<!-- Portafolio Web Angular - Carrusel Horizontal -->
 <app-header></app-header>
 
-<main class="portfolio-main">
-  <app-hero></app-hero>
-  <app-about></app-about>
-  <app-projects></app-projects>
-  <app-skills></app-skills>
-  <app-experience></app-experience>
-  <app-contact></app-contact>
+<!-- Carrusel Principal -->
+<main class="portfolio-carousel">
+  <div class="carousel-wrapper">
+    <div class="carousel-slides" [style.transform]="'translateX(-' + (currentSlide * 100) + 'vw)'">
+      <section class="slide" id="slide-0">
+        <app-hero></app-hero>
+      </section>
+      <section class="slide" id="slide-1">
+        <app-about></app-about>
+      </section>
+      <section class="slide" id="slide-2">
+        <app-projects></app-projects>
+      </section>
+      <section class="slide" id="slide-3">
+        <app-skills></app-skills>
+      </section>
+      <section class="slide" id="slide-4">
+        <app-experience></app-experience>
+      </section>
+      <section class="slide" id="slide-5">
+        <app-contact></app-contact>
+      </section>
+    </div>
+  </div>
+
+  <!-- Indicador de swipe para móviles -->
+  <div class="swipe-hint">Desliza ← →</div>
+
+  <!-- Indicadores tipo Banner -->
+  <div class="carousel-indicators">
+    <button 
+      *ngFor="let slide of slides; let i = index" 
+      class="dot-indicator" 
+      [class.active]="i === currentSlide"
+      (click)="goToSlide(i)">
+    </button>
+  </div>
 </main>
 
 <app-footer></app-footer>

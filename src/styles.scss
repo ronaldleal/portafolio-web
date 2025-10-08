@@ -45,6 +45,28 @@ body {
   overflow-x: hidden; // Prevenir scroll horizontal
 }
 
+/* Estilos globales para carrusel horizontal */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  overflow: hidden; /* Evitar scroll en el body */
+}
+
+section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -117,7 +139,7 @@ body {
   .container {
     padding: 0 1rem;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
@@ -132,7 +154,7 @@ body {
   opacity: 0;
   transform: translateY(30px);
   transition: all var(--transition-slow);
-  
+
   &.animate-in {
     opacity: 1;
     transform: translateY(0);
@@ -142,7 +164,7 @@ body {
 .animate-fade-in {
   opacity: 0;
   transition: opacity var(--transition-slow);
-  
+
   &.animate-in {
     opacity: 1;
   }
@@ -152,7 +174,7 @@ body {
   opacity: 0;
   transform: translateX(-50px);
   transition: all var(--transition-slow);
-  
+
   &.animate-in {
     opacity: 1;
     transform: translateX(0);
@@ -163,7 +185,7 @@ body {
   opacity: 0;
   transform: translateX(50px);
   transition: all var(--transition-slow);
-  
+
   &.animate-in {
     opacity: 1;
     transform: translateX(0);
@@ -174,7 +196,7 @@ body {
   opacity: 0;
   transform: scale(0.8);
   transition: all var(--transition-slow);
-  
+
   &.animate-in {
     opacity: 1;
     transform: scale(1);
@@ -185,7 +207,7 @@ body {
   opacity: 0;
   transform: scale(0.3);
   transition: all var(--transition-slow) cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  
+
   &.animate-in {
     opacity: 1;
     transform: scale(1);
@@ -203,7 +225,7 @@ body {
 // Microinteracciones modernas
 .hover-lift {
   transition: transform var(--transition-normal);
-  
+
   &:hover {
     transform: translateY(-8px);
   }
@@ -212,7 +234,7 @@ body {
 .hover-glow {
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -223,7 +245,7 @@ body {
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.5s;
   }
-  
+
   &:hover::before {
     left: 100%;
   }
@@ -408,7 +430,7 @@ body {
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
-    
+
     &::before {
       left: 100%;
     }
@@ -418,5 +440,3 @@ body {
     transform: translateY(0);
   }
 }
-
-

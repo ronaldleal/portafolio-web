@@ -48,7 +48,7 @@ Esta prueba usa exactamente las mismas credenciales sin Angular.
 
 #### 🔑 **Credenciales Incorrectas**
 - Service ID incorrecto
-- Template ID incorrecto  
+- Template ID incorrecto
 - Public Key incorrecto
 
 #### 📝 **Template Mal Configurado**

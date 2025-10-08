@@ -22,7 +22,7 @@ EmailJS permite enviar correos directamente desde el frontend sin necesidad de u
    - Crea un nuevo template
    - Usa estas variables en tu plantilla:
      - `{{from_name}}` - Nombre del remitente
-     - `{{from_email}}` - Email del remitente  
+     - `{{from_email}}` - Email del remitente
      - `{{message}}` - Mensaje
      - `{{to_name}}` - Tu nombre (destino)
      - `{{reply_to}}` - Email para responder
@@ -98,7 +98,7 @@ Para mayor seguridad, puedes usar variables de entorno:
 // En email.service.ts
 private defaultConfig: EmailConfig = {
   serviceId: environment.emailjs.serviceId,
-  templateId: environment.emailjs.templateId, 
+  templateId: environment.emailjs.templateId,
   publicKey: environment.emailjs.publicKey
 };
 ```

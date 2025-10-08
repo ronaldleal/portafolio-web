@@ -1,18 +1,35 @@
-// Hero moderno con animaciones avanzadas
+// Hero ultra moderno con diseño glassmorphism - Carrusel
 .hero {
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 2rem;
+  padding: 2rem;
+  margin: 0;
   position: relative;
-  margin-top: 80px;
   overflow: hidden;
-  
-  // Background gradient moderno
-  background: radial-gradient(ellipse at top, rgba(102, 126, 234, 0.05) 0%, transparent 70%),
-              linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+
+  // Background ejecutivo con tonos profesionales
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(31, 41, 55, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(55, 65, 81, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(17, 24, 39, 0.2) 0%, transparent 50%),
+    linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    
+  // Efecto de profundidad
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
 }
 
 // Partículas de fondo animadas
@@ -83,30 +100,66 @@
   align-items: center;
   position: relative;
   z-index: 2;
+  
+  // Glassmorphism container ejecutivo
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
-// Contenido del hero mejorado
+// Contenido del hero ultra moderno
 .hero-content {
   .hero-greeting {
     font-size: 1.2rem;
     color: var(--text-secondary);
     margin-bottom: 1rem;
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 2px;
+      background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+      border-radius: 1px;
+    }
   }
 
   .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 800;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
     margin-bottom: 1rem;
     line-height: 1.1;
     position: relative;
 
     .name-text {
-      background: var(--primary-gradient);
+      background: linear-gradient(135deg, #d4af37 0%, #f8c471 50%, #f4d03f 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       position: relative;
+      display: inline-block;
+      
+      // Efecto de brillo sutil dorado
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+        animation: shimmer 3s infinite;
+      }
     }
 
     .title-cursor {
@@ -121,19 +174,53 @@
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
+    overflow: hidden;
+    position: relative;
 
-    .typing-text {
+    .reveal-text {
       font-size: 1.4rem;
       color: var(--text-secondary);
       font-weight: 500;
       min-height: 1.6em;
       position: relative;
-
+      display: block;
+      line-height: 1.4;
+      
+      // Efecto Word by Word Reveal
+      .word-reveal {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+        filter: blur(3px);
+        margin-right: 0.3em;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      &.revealing .word-reveal {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+        animation: word-glow 0.8s ease-out forwards;
+      }
+      
+      &.hiding .word-reveal {
+        opacity: 0;
+        transform: translateY(-20px) scale(1.1);
+        filter: blur(2px);
+        transition-duration: 0.4s;
+      }
+      
+      // Efecto de brillo dorado sutil
       &::after {
-        content: '|';
-        color: var(--accent-color);
-        animation: blink 1s infinite;
-        margin-left: 2px;
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #d4af37, #f4d03f);
+        border-radius: 1px;
+        animation: underline-expand 4s ease-in-out infinite;
       }
     }
   }
@@ -145,68 +232,278 @@
     margin-bottom: 2rem;
 
     strong {
-      color: var(--accent-color);
+      color: #d4af37;
       font-weight: 600;
     }
   }
 }
 
-// Stats animados
-.hero-stats {
+// Tecnologías principales: 4 arriba, 3 abajo
+.hero-tech-stack {
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
   margin-bottom: 3rem;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  .stat-item {
-    text-align: center;
-
-    .stat-number {
-      display: block;
-      font-size: 2rem;
-      font-weight: 700;
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  .tech-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    min-width: 120px;
+    min-height: 120px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 1;
+    
+    // Estado inicial para animación de entrada
+    opacity: 0;
+    transform: translateY(20px);
+    animation: tech-item-appear 0.6s ease-out forwards;
+    
+    // Efectos hover ejecutivos
+    &:hover {
+      transform: translateY(-8px) scale(1.05);
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(212, 175, 55, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      
+      .tech-icon {
+        transform: scale(1.2) rotate(5deg);
+      }
+      
+      .tech-symbol {
+        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
+      }
+    }
+    
+    // Efecto de brillo en hover
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    
+    &:hover::before {
+      opacity: 1;
+    }
+    
+    // Colores específicos por tecnología
+    &[data-tech="java"]:hover {
+      border-color: rgba(237, 117, 54, 0.5);
+      .tech-logo { 
+        color: #ed7536;
+        filter: drop-shadow(0 0 15px rgba(237, 117, 54, 0.6)); 
+      }
+    }
+    
+    &[data-tech="spring"]:hover {
+      border-color: rgba(109, 179, 63, 0.5);
+      .tech-logo { 
+        color: #6db33f;
+        filter: drop-shadow(0 0 15px rgba(109, 179, 63, 0.6)); 
+      }
+    }
+    
+    &[data-tech="angular"]:hover {
+      border-color: rgba(221, 0, 49, 0.5);
+      .tech-logo { 
+        color: #dd0031;
+        filter: drop-shadow(0 0 15px rgba(221, 0, 49, 0.6)); 
+      }
+    }
+    
+    &[data-tech="typescript"]:hover {
+      border-color: rgba(0, 122, 204, 0.5);
+      .tech-logo { 
+        color: #007acc;
+        filter: drop-shadow(0 0 15px rgba(0, 122, 204, 0.6)); 
+      }
+    }
+    
+    &[data-tech="docker"]:hover {
+      border-color: rgba(33, 150, 243, 0.5);
+      .tech-logo { 
+        color: #2196f3;
+        filter: drop-shadow(0 0 15px rgba(33, 150, 243, 0.6)); 
+      }
+    }
+    
+    &[data-tech="aws"]:hover {
+      border-color: rgba(255, 153, 0, 0.5);
+      .tech-logo { 
+        color: #ff9900;
+        filter: drop-shadow(0 0 15px rgba(255, 153, 0, 0.6)); 
+      }
+    }
+    
+    &[data-tech="postgres"]:hover {
+      border-color: rgba(51, 103, 145, 0.5);
+      .tech-logo { 
+        color: #336791;
+        filter: drop-shadow(0 0 15px rgba(51, 103, 145, 0.6)); 
+      }
     }
 
-    .stat-label {
-      font-size: 0.9rem;
+    .tech-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.8rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      .tech-symbol {
+        font-size: 2rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      .tech-logo {
+        width: 32px;
+        height: 32px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        color: #94a3b8; // Color base neutro para SVGs
+        object-fit: contain; // Para imágenes
+        user-select: none; // Evitar selección
+        pointer-events: none; // Evitar interacciones
+      }
+    }
+
+    .tech-label {
+      font-size: 0.85rem;
       color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.2;
+      margin-top: 0.75rem;
+      transition: color 0.3s ease;
+    }
+    
+    &:hover .tech-label {
+      color: #d4af37;
     }
   }
 }
 
-// Botones modernos
+// Botones ultra modernos con efectos avanzados
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 
-  .btn-download {
-    background: var(--secondary-gradient);
+  // Botón principal ejecutivo
+  .btn-modern {
+    position: relative;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
     color: white;
-    padding: 12px 24px;
-    border-radius: 50px;
     text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    border: 2px solid #d4af37;
+    cursor: pointer;
+    
+    // Efecto de brillo dorado
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    &:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
+      background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+      color: #1e293b;
+      
+      &::before {
+        left: 100%;
+      }
+    }
+    
+    &:active {
+      transform: translateY(-1px) scale(1.02);
+    }
+  }
+  
+  // Botón secundario ejecutivo
+  .btn-secondary {
+    padding: 16px 32px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: #f8fafc;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    
+    &:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #d4af37;
+      color: #d4af37;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    }
+  }
+
+  .btn-download {
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    transition: all var(--transition-normal);
-    border: none;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #d4af37;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
 
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(71, 85, 105, 0.4);
+      background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+      color: #1e293b;
     }
 
     span {
@@ -235,7 +532,7 @@
   }
 }
 
-// Imagen del hero moderna
+// Imagen del hero ultra moderna
 .hero-image {
   display: flex;
   justify-content: center;
@@ -244,31 +541,53 @@
 
 .avatar-container {
   position: relative;
-  width: 350px;
-  height: 350px;
+  width: 380px;
+  height: 380px;
 }
 
 .avatar {
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
-  background: var(--bg-secondary);
-  box-shadow: var(--shadow-lg);
-  transition: all var(--transition-normal);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(212, 175, 55, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    
+  // Optimizaciones para mantener calidad de imagen
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+  
+  // Asegurar que el contenedor no afecte la calidad
+  image-rendering: high-quality;
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 30px 60px rgba(102, 126, 234, 0.3);
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 
+      0 40px 80px rgba(212, 175, 55, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    border-color: rgba(212, 175, 55, 0.6);
 
     .avatar-ring {
-      transform: scale(1.1);
-      opacity: 0.8;
+      transform: scale(1.2);
+      opacity: 1;
+      animation-duration: 2s;
     }
 
     .avatar-glow {
-      opacity: 0.6;
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+    
+    .profile-img {
+      transform: scale(1.05);
+      filter: contrast(1.08) saturate(1.15) brightness(1.03);
     }
   }
 
@@ -276,8 +595,36 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center center;
     z-index: 2;
     position: relative;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    
+    // Mejoras para resolución y nitidez
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: high-quality;
+    -ms-interpolation-mode: bicubic;
+    
+    // Filtros para mejorar la calidad visual
+    filter: contrast(1.05) saturate(1.1) brightness(1.02);
+    
+    // Antialiasing mejorado
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+    // Prevenir pixelación en transformaciones
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    
+    // Optimización para dispositivos de alta densidad
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: optimize-contrast;
+    }
   }
 
   .image-placeholder {
@@ -286,118 +633,157 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--primary-gradient);
-    color: white;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+    color: #d4af37;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
-    font-weight: bold;
+    font-size: 4.5rem;
+    font-weight: 900;
     z-index: 1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   }
 }
 
-// Efectos visuales del avatar
+// Efectos visuales ultra modernos del avatar
 .avatar-ring {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #d4af37, #f4d03f, #f8c471, #d4af37);
+  animation: rotate 4s linear infinite;
+  opacity: 0.8;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // Segundo anillo dorado para efecto múltiple
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg, #f4d03f, #d4af37, #f4d03f);
+    animation: rotate 6s linear infinite reverse;
+  }
+}
+
+.avatar-glow {
   position: absolute;
   top: -20px;
   left: -20px;
   right: -20px;
   bottom: -20px;
-  border: 3px solid transparent;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
   border-radius: 50%;
-  background: conic-gradient(from 0deg, var(--primary-gradient), transparent 50%, var(--primary-gradient));
-  animation: rotate 3s linear infinite;
-  opacity: 0.5;
-  transition: all var(--transition-normal);
-}
-
-.avatar-glow {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  background: var(--primary-gradient);
-  border-radius: 50%;
-  filter: blur(20px);
-  opacity: 0.3;
-  transition: all var(--transition-normal);
+  filter: blur(30px);
+  opacity: 0.6;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -1;
+  animation: pulse-glow 3s ease-in-out infinite;
 }
 
-// Elementos flotantes
-.floating-element {
-  position: absolute;
-  font-size: 2rem;
-  animation: float 4s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 3;
 
-  &.java {
-    top: 10%;
-    left: 10%;
-    animation-delay: 0s;
-  }
 
-  &.spring {
-    top: 20%;
-    right: 10%;
-    animation-delay: 1s;
-  }
-
-  &.code {
-    bottom: 30%;
-    left: 5%;
-    animation-delay: 2s;
-  }
-
-  &.rocket {
-    bottom: 10%;
-    right: 15%;
-    animation-delay: 3s;
-  }
-}
-
-// Indicador de scroll moderno
+// Indicador de scroll ultra moderno y clickeable (fuera del padding)
 .scroll-indicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: -3rem; /* Fuera del contenido, en el margin-bottom */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   cursor: pointer;
   z-index: 3;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1rem; // Área de click más grande
+  border-radius: 20px;
+  
+  // Efecto de brillo sutil para indicar que es clickeable
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateX(-50%) translateY(-8px) scale(1.1);
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    .scroll-text {
+      color: #d4af37;
+      font-weight: 700;
+    }
+    
+    .scroll-arrow {
+      background: linear-gradient(180deg, #d4af37, #f4d03f);
+      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+      transform: translateY(3px);
+    }
+  }
+  
+  // Efecto de click
+  &:active {
+    transform: translateX(-50%) translateY(-2px) scale(1.05);
+  }
 
   .scroll-text {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 500;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    user-select: none;
+    
+    // Indicador visual de que es clickeable
+    &::after {
+      content: ' ↓';
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
   }
 
   .scroll-arrow {
-    width: 2px;
-    height: 30px;
-    background: var(--accent-color);
+    width: 30px;
+    height: 50px;
+    border: 2px solid #d4af37;
+    border-radius: 20px;
     position: relative;
-    border-radius: 2px;
-
-    &::after {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    // Punto animado dorado dentro del scroll
+    &::before {
       content: '';
       position: absolute;
-      bottom: 0;
+      top: 8px;
       left: 50%;
       transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 6px solid var(--accent-color);
+      width: 6px;
+      height: 6px;
+      background: #d4af37;
+      border-radius: 50%;
+      animation: scroll-dot 2s ease-in-out infinite;
     }
   }
 }
@@ -414,7 +800,7 @@
   z-index: 1;
 }
 
-// Animaciones específicas
+// Animaciones específicas mejoradas
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
@@ -423,6 +809,86 @@
 @keyframes rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.7);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes float-smooth {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(1deg); }
+  50% { transform: translateY(-20px) rotate(0deg); }
+  75% { transform: translateY(-10px) rotate(-1deg); }
+}
+
+@keyframes scroll-dot {
+  0% { 
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) translateY(15px);
+    opacity: 0.5;
+  }
+  100% { 
+    transform: translateX(-50%) translateY(30px);
+    opacity: 0;
+  }
+}
+
+@keyframes text-shimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+@keyframes word-glow {
+  0% {
+    text-shadow: 0 0 0 transparent;
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 0 transparent;
+  }
+}
+
+@keyframes underline-expand {
+  0%, 70% { width: 0; }
+  85% { width: 100%; }
+  100% { width: 0; }
+}
+
+@keyframes tech-item-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+    filter: blur(5px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(10px) scale(0.95);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 
 // Responsive design
@@ -452,19 +918,38 @@
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
+    padding: 2rem 1.5rem;
+    margin: 1rem;
   }
 
   .hero-content {
     order: 2;
 
-    .hero-stats {
-      justify-content: center;
-      padding: 1rem;
-      gap: 1rem;
+    .hero-tech-stack {
+      gap: 1.2rem;
+      
+      .tech-row {
+        gap: 1.2rem;
+      }
+      
+      .tech-item {
+        padding: 1.2rem;
+        min-width: 110px;
+        min-height: 110px;
+        aspect-ratio: 1;
+      }
     }
 
     .hero-buttons {
       justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      
+      .btn-modern, .btn-secondary, .btn-download {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
     }
   }
 
@@ -473,17 +958,13 @@
   }
 
   .avatar-container {
-    width: 250px;
-    height: 250px;
+    width: 280px;
+    height: 280px;
   }
 
   .avatar {
-    width: 200px;
-    height: 200px;
-  }
-
-  .floating-element {
-    display: none; // Ocultar en móviles para mejor rendimiento
+    width: 240px;
+    height: 240px;
   }
 
   .scroll-indicator {
@@ -505,13 +986,46 @@
       font-size: 1rem;
     }
 
-    .hero-stats {
-      flex-direction: column;
-      gap: 0.5rem;
+    .hero-tech-stack {
+      gap: 1rem;
       
-      .stat-item {
-        .stat-number {
-          font-size: 1.5rem;
+      .tech-row {
+        gap: 0.8rem;
+        
+        &.tech-row-top {
+          // En móvil, mostrar 2x2 en la fila superior
+          .tech-item:nth-child(n+3) {
+            flex-basis: 100%;
+          }
+        }
+        
+        &.tech-row-bottom {
+          // En móvil, centrar los 3 elementos de abajo
+          justify-content: center;
+        }
+      }
+
+      .tech-item {
+        padding: 1rem;
+        min-width: 90px;
+        min-height: 90px;
+        max-width: 90px;
+        flex: 0 0 90px;
+        aspect-ratio: 1;
+        
+        .tech-icon {
+          width: 40px;
+          height: 40px;
+          
+          .tech-logo {
+            width: 28px;
+            height: 28px;
+          }
+        }
+        
+        .tech-label {
+          font-size: 0.75rem;
+          margin-top: 0.5rem;
         }
       }
     }

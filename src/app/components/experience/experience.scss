@@ -1,6 +1,14 @@
 .experience {
-  padding: 5rem 0;
-  background: #f8f9fa;
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+  margin: 0;
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
 }
 
 .container {
@@ -114,11 +122,11 @@
   .timeline::before {
     left: 2rem;
   }
-  
+
   .timeline-dot {
     left: 2rem;
   }
-  
+
   .timeline-content {
     width: calc(100% - 4rem);
     left: 4rem !important;

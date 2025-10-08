@@ -1,6 +1,19 @@
 .skills {
-  padding: 5rem 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
+  margin: 0;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}s {
+  padding: 6rem 0 3rem 0; /* Más espacio arriba, menos abajo */
+  margin-bottom: 4rem; /* Espacio fuera del padding para el scroll */
   background: #fff;
+  position: relative; /* Para el scroll indicator */
 }
 
 .container {
@@ -81,7 +94,7 @@
   .skills-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .skill-category {
     padding: 1.5rem;
   }

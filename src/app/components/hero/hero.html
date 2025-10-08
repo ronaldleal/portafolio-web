@@ -18,26 +18,91 @@
         <span class="title-cursor">|</span>
       </h1>
       <div class="hero-subtitle-container animate-fade-in animate-delay-3">
-        <span class="typing-text">{{ displayedText() }}</span>
+        <span class="reveal-text">{{ displayedText() }}</span>
       </div>
       <p class="hero-description animate-fade-in animate-delay-4">
-        Ingeniero de software especializado en <strong>Java</strong>, <strong>Spring Boot</strong> y arquitecturas robustas. 
+        Ingeniero de software especializado en <strong>Java</strong>, <strong>Spring Boot</strong> y arquitecturas robustas.
         Apasionado por crear soluciones eficientes e innovadoras con las últimas tecnologías.
       </p>
-      
-      <!-- Stats animados -->
-      <div class="hero-stats animate-bounce-in animate-delay-5">
-        <div class="stat-item">
-          <span class="stat-number" [attr.data-target]="3">0</span>
-          <span class="stat-label">Años experiencia</span>
+
+      <!-- Tecnologías principales: 4 arriba, 3 abajo -->
+      <div class="hero-tech-stack animate-bounce-in animate-delay-5">
+        <!-- Fila superior: 4 tecnologías -->
+        <div class="tech-row tech-row-top">
+          <div class="tech-item" data-tech="java">
+            <div class="tech-icon">
+              <img 
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" 
+                alt="Java" 
+                class="tech-logo"
+                loading="lazy">
+            </div>
+            <span class="tech-label">Java</span>
+          </div>
+          <div class="tech-item" data-tech="spring">
+            <div class="tech-icon">
+              <img 
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" 
+                alt="Spring Boot" 
+                class="tech-logo"
+                loading="lazy">
+            </div>
+            <span class="tech-label">Spring Boot</span>
+          </div>
+          <div class="tech-item" data-tech="angular">
+            <div class="tech-icon">
+              <img 
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" 
+                alt="Angular" 
+                class="tech-logo"
+                loading="lazy">
+            </div>
+            <span class="tech-label">Angular</span>
+          </div>
+          <div class="tech-item" data-tech="typescript">
+            <div class="tech-icon">
+              <img 
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" 
+                alt="TypeScript" 
+                class="tech-logo"
+                loading="lazy">
+            </div>
+            <span class="tech-label">TypeScript</span>
+          </div>
         </div>
-        <div class="stat-item">
-          <span class="stat-number" [attr.data-target]="15">0</span>
-          <span class="stat-label">Proyectos</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" [attr.data-target]="8">0</span>
-          <span class="stat-label">Tecnologías</span>
+
+        <!-- Fila inferior: 3 tecnologías centradas -->
+        <div class="tech-row tech-row-bottom">
+          <div class="tech-item" data-tech="docker">
+            <div class="tech-icon">
+              <img 
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" 
+                alt="Docker" 
+                class="tech-logo"
+                loading="lazy">
+            </div>
+            <span class="tech-label">Docker</span>
+          </div>
+          <div class="tech-item" data-tech="aws">
+            <div class="tech-icon">
+              <img 
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" 
+                alt="AWS" 
+                class="tech-logo"
+                loading="lazy">
+            </div>
+            <span class="tech-label">AWS</span>
+          </div>
+          <div class="tech-item" data-tech="postgres">
+            <div class="tech-icon">
+              <img 
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" 
+                alt="PostgreSQL" 
+                class="tech-logo"
+                loading="lazy">
+            </div>
+            <span class="tech-label">PostgreSQL</span>
+          </div>
         </div>
       </div>
 
@@ -53,30 +118,25 @@
         </a>
       </div>
     </div>
-    
+
     <div class="hero-image animate-slide-right animate-delay-2">
       <div class="avatar-container">
         <div class="avatar hover-lift">
-          <img src="assets/profile.jpg" alt="Ronald Leal" class="profile-img">
+          <img 
+            src="assets/profile.jpg" 
+            alt="Ronald Leal" 
+            class="profile-img"
+            loading="eager"
+            decoding="sync"
+            fetchpriority="high"
+            draggable="false">
           <div class="image-placeholder">RL</div>
           <!-- Efectos visuales -->
           <div class="avatar-ring"></div>
           <div class="avatar-glow"></div>
         </div>
-        
-        <!-- Elementos flotantes -->
-        <div class="floating-element java">{{ '{' }}</div>
-        <div class="floating-element spring">◇</div>
-        <div class="floating-element code">▷</div>
-        <div class="floating-element rocket">△</div>
       </div>
     </div>
-  </div>
-  
-  <!-- Indicador de scroll mejorado -->
-  <div class="scroll-indicator animate-bounce-in animate-delay-6">
-    <div class="scroll-text">Scroll</div>
-    <div class="scroll-arrow animate-float"></div>
   </div>
 
   <!-- Gradient overlay -->

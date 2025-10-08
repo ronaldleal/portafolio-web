@@ -50,13 +50,13 @@ export class Header implements OnInit {
     if (element) {
       const headerHeight = 80;
       const elementPosition = element.offsetTop - headerHeight;
-      
+
       window.scrollTo({
         top: elementPosition,
         behavior: 'smooth'
       });
     }
-    
+
     // Cerrar menú móvil si está abierto
     this.isMobileMenuOpen.set(false);
     this.activeSection.set(sectionId);
@@ -69,7 +69,7 @@ export class Header implements OnInit {
   toggleTheme() {
     const newTheme = !this.isDarkMode();
     this.isDarkMode.set(newTheme);
-    
+
     // Solo ejecutar en el browser
     if (typeof window !== 'undefined') {
       if (newTheme) {
@@ -89,7 +89,7 @@ export class Header implements OnInit {
   private updateActiveSection() {
     // Solo ejecutar en el browser
     if (typeof window === 'undefined') return;
-    
+
     const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact'];
     const scrollPosition = window.scrollY + 100;
 

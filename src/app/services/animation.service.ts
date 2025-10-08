@@ -22,13 +22,13 @@ export class AnimationService {
         if (entry.isIntersecting) {
           // Agregar clase de animación cuando el elemento es visible
           this.renderer.addClass(entry.target, 'animate-in');
-          
+
           // Aplicar delay si está definido
           const delay = entry.target.getAttribute('data-delay');
           if (delay) {
             this.renderer.addClass(entry.target, `animate-delay-${delay}`);
           }
-          
+
           // Opcional: dejar de observar el elemento una vez animado
           observer.unobserve(entry.target);
         }
@@ -42,14 +42,14 @@ export class AnimationService {
     const animatedElements = document.querySelectorAll(
       '.animate-on-scroll, .animate-fade-in, .animate-slide-left, .animate-slide-right, .animate-scale-in, .animate-bounce-in'
     );
-    
+
     animatedElements.forEach(el => observer.observe(el));
   }
 
   // Método para agregar animaciones a elementos específicos
   addScrollAnimation(element: HTMLElement, animationType: string, delay?: number) {
     this.renderer.addClass(element, animationType);
-    
+
     if (delay) {
       this.renderer.addClass(element, `animate-delay-${delay}`);
     }
@@ -74,7 +74,7 @@ export class AnimationService {
   fadeIn(element: HTMLElement, duration = 500) {
     this.renderer.setStyle(element, 'opacity', '0');
     this.renderer.setStyle(element, 'transition', `opacity ${duration}ms ease`);
-    
+
     setTimeout(() => {
       this.renderer.setStyle(element, 'opacity', '1');
     }, 50);
@@ -91,7 +91,7 @@ export class AnimationService {
     this.renderer.setStyle(element, 'opacity', '0');
     this.renderer.setStyle(element, 'transform', transforms[direction]);
     this.renderer.setStyle(element, 'transition', `all ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)`);
-    
+
     setTimeout(() => {
       this.renderer.setStyle(element, 'opacity', '1');
       this.renderer.setStyle(element, 'transform', 'translate(0, 0)');
@@ -102,7 +102,7 @@ export class AnimationService {
     this.renderer.setStyle(element, 'opacity', '0');
     this.renderer.setStyle(element, 'transform', 'scale(0.8)');
     this.renderer.setStyle(element, 'transition', `all ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)`);
-    
+
     setTimeout(() => {
       this.renderer.setStyle(element, 'opacity', '1');
       this.renderer.setStyle(element, 'transform', 'scale(1)');
@@ -113,7 +113,7 @@ export class AnimationService {
   typeWriter(element: HTMLElement, text: string, speed = 50) {
     element.innerHTML = '';
     let i = 0;
-    
+
     const timer = setInterval(() => {
       if (i < text.length) {
         element.innerHTML += text.charAt(i);
@@ -132,7 +132,7 @@ export class AnimationService {
       const progress = Math.min((now - start) / duration, 1);
       const value = Math.floor(progress * (to - from) + from);
       element.textContent = value.toString();
-      
+
       if (progress === 1) {
         clearInterval(timer);
       }
